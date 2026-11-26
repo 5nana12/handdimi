@@ -35,18 +35,11 @@ const sketch = (p) => {
   p.setup = () => {
     const canvas = p.createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT);
     canvas.parent("canvas-box");
-
-    canvas.mousePressed(startStroke);
-    canvas.touchStarted(startStroke);
   };
 
   p.draw = () => {
     p.background(255);
     drawGuideLines(p);
-
-    if (currentStroke && p.mouseIsPressed) {
-      addPoint(p.mouseX, p.mouseY);
-    }
 
     p.stroke(34);
     p.strokeWeight(PEN_SIZE);
@@ -59,14 +52,29 @@ const sketch = (p) => {
     }
   };
 
-  p.mouseReleased = endStroke;
-  p.touchEnded = endStroke;
+  p.mousePressed = () => {
+    if (!isInsideCanvas()) return;
 
-  function startStroke() {
     currentStroke = [];
     letterStrokes[currentLetter()].push(currentStroke);
     addPoint(p.mouseX, p.mouseY);
     return false;
+  };
+
+  p.mouseDragged = () => {
+    if (!currentStroke) return;
+
+    addPoint(p.mouseX, p.mouseY);
+    return false;
+  };
+
+  p.mouseReleased = () => {
+    currentStroke = null;
+  };
+
+  function isInsideCanvas() {
+    return p.mouseX >= 0 && p.mouseX <= CANVAS_WIDTH
+      && p.mouseY >= 0 && p.mouseY <= CANVAS_HEIGHT;
   }
 
   function addPoint(x, y) {
@@ -77,10 +85,6 @@ const sketch = (p) => {
     if (last && p.dist(last.x, last.y, x, y) < 2) return;
 
     currentStroke.push({ x: Math.round(x), y: Math.round(y) });
-  }
-
-  function endStroke() {
-    currentStroke = null;
   }
 };
 
