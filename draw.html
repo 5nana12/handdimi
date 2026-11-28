@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="same-origin">
+  <title>나의 첫 손글씨 | HANDDIMI</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="page draw-page">
+    <header class="header">
+      <h1 class="title">나의 첫 손글씨</h1>
+      <div class="header-buttons">
+        <button class="btn btn-wide" id="btn-my-fonts">내 폰트 목록</button>
+        <button class="btn btn-wide" id="btn-overview">전체 보기 →</button>
+      </div>
+    </header>
+
+    <section class="info">
+      <span class="info-label">지금 그릴 글자</span>
+      <span class="current-letter" id="current-letter">A</span>
+      <span class="progress" id="progress">1 / 26</span>
+    </section>
+
+    <div id="canvas-box"></div>
+
+    <footer class="footer">
+      <div class="footer-left">
+        <button class="btn" id="btn-undo">되돌리기</button>
+        <button class="btn" id="btn-clear">지우기</button>
+      </div>
+      <div class="footer-right">
+        <button class="btn btn-mid" id="btn-prev">이전 글자</button>
+        <button class="btn btn-primary" id="btn-next">다음 글자</button>
+      </div>
+    </footer>
+  </main>
+
+  <script type="module" src="./js/draw-page.js"></script>
+  <script type="module" src="./js/draw.js"></script>
+</body>
+</html>

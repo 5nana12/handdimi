@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>전체 보기 | HANDDIMI</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <main class="page wide-page">
+    <header class="header">
+      <h1 class="title">전체 보기</h1>
+      <a class="btn btn-return" href="./draw.html">그리기로 돌아가기</a>
+    </header>
+    <div class="overview-layout">
+      <div class="alphabet-grid" id="uppercase-grid" role="list" aria-label="그린 영문 대문자"></div>
+      <section class="export-panel" aria-label="폰트 내보내기">
+        <p class="font-progress" id="uppercase-count">0 / 26</p>
+        <label class="field" for="family-name">폰트 이름
+          <input id="family-name" value="나의 첫 손글씨" maxlength="80" required>
+        </label>
+        <div class="export-actions">
+          <button class="btn btn-primary" type="button" id="download-font" disabled>다운로드 (.otf)</button>
+          <button class="btn" type="button" id="write-letter" disabled>이 폰트로 편지 쓰기</button>
+        </div>
+        <p id="font-status" role="status"></p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./js/font-page.js"></script>
+</body>
+</html>
